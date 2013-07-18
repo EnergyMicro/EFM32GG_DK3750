@@ -71,8 +71,8 @@ void GPIO_EVEN_IRQHandler(void)
   uint16_t joystick;
 
   /* Clear interrupt */
-  BSP_InterruptFlagsClear(BC_INTEN_JOYSTICK);
   GPIO_IntClear(1 << GPIO_INT_PIN);
+  BSP_InterruptFlagsClear(BC_INTEN_JOYSTICK);
 
   /* LEDs on to indicate joystick used */
   BSP_LedsSet(0xffff);
