@@ -79,12 +79,12 @@ void GPIO_EVEN_IRQHandler(void)
 {
   uint16_t data, joystick;
 
+  /* Clear GPIO interrupt */
+  GPIO_IntClear(1 << GPIO_INT_PIN);
+
   /* Clear interrupt */
   data = BSP_InterruptFlagsGet();
   BSP_InterruptFlagsClear(data);
-
-  /* Clear GPIO interrupt */
-  GPIO_IntClear(1 << GPIO_INT_PIN);
 
   /* Read joystick status */
   joystick = BSP_JoystickGet();

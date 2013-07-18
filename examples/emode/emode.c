@@ -136,12 +136,12 @@ void GPIO_EVEN_IRQHandler(void)
 {
   uint16_t flags, joystick, pb;
 
+  /* Clear GPIO interrupt */
+  GPIO_IntClear(1 << GPIO_INT_PIN);
+
   /* Clear interrupt */
   flags = BSP_InterruptFlagsGet();
   BSP_InterruptFlagsClear(flags);
-
-  /* Clear GPIO interrupt */
-  GPIO_IntClear(1 << GPIO_INT_PIN);
 
   /* Move selection */
   if(flags & BC_INTEN_JOYSTICK)
